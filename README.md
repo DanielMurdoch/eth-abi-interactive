@@ -24,7 +24,6 @@ Click on any of them. You will be asked for the Smart Contract deployed address.
 
 ![Workspace](images/workspace.png)
 
-
 The Smart Contract ABI will be displayed. Here, you have one entry per function, and inside each one, one entry per argument.
 
 Choose a function, edit its parameters and click the `Call method` icon next to it. This will send a transaction without mining it in the blockchain. This way, you can check if it will be successful.
@@ -34,7 +33,6 @@ Now, click the `Send transaction` icon to mine it.
 All output will appear in the `Eth ABI Interactive` Output Channel, right next to your Terminal tab.
 
 ![Call and Send Tx](images/callAndSend.png)
-
 
 ## Accounts management
 
@@ -58,7 +56,6 @@ When choosing an account from the list, you will be asked for its decryption pas
 
 This extension contributes the following settings:
 
-* `eth-abi-interactive.privateKeysFile`: File to store private keys used to sign transactions. Keys are encrypted using a master password. They are encrypted via [Web3JS.eth.accounts](https://web3js.readthedocs.io/en/v1.2.0/web3-eth-accounts.html#wallet-encrypt). Will default to `$HOME/.eth-abi-interactive/keys.json`.
-* `eth-abi-interactive.contractsPath`: Directory where the compiled smart contracts are stored. Relative to workspace root. Will default to Truffle's `build/contracts`.
-* `eth-abi-interactive.nodeURI`: Ethereum node to send transactions to. Defaults to `http://localhost:8545`.
-
+- `eth-abi-explorer.privateKeysFile`: File to store private keys used to sign transactions. Keys are encrypted using a master password. They are encrypted via [Web3JS.eth.accounts](https://web3js.readthedocs.io/en/v1.2.0/web3-eth-accounts.html#wallet-encrypt). Will default to `$HOME/.eth-abi-explorer/keys.json`.
+- `eth-abi-explorer.contractsPath`: Directory where the compiled smart contracts are stored. Relative to workspace root. Will default to Truffle's `build/contracts`.
+- `eth-abi-explorer.nodeURI`: Ethereum node to send transactions to. Defaults to `http://localhost:8545`.

@@ -1,183 +1,183 @@
 {
-	"name": "eth-abi-interactive",
-	"displayName": "Eth ABI Interactive",
-	"publisher": "jlcs-es",
-	"description": "Interact with deployed Ethereum smart contracts using the ABI",
-	"license": "SEE LICENSE IN LICENSE.txt",
-	"icon": "media/eth.png",
-	"repository": {
-		"type": "git",
-		"url": "https://github.com/jlcs-es/eth-abi-interactive"
-	},
-	"version": "0.0.2",
-	"engines": {
-		"vscode": "^1.50.0"
-	},
-	"categories": [
-		"Other"
-	],
-	"activationEvents": [
-		"onView:eth-abi-interactive.contracts"
-	],
-	"main": "./out/extension.js",
-	"contributes": {
-		"configuration": {
-			"title": "Ethereum ABI Interactive",
-			"properties": {
-				"eth-abi-interactive.privateKeysFile": {
-					"type": "string",
-					"markdownDescription": "File to store private keys used to sign transactions. Keys are encrypted using a master password. They are encrypted via [Web3JS.eth.accounts](https://web3js.readthedocs.io/en/v1.2.0/web3-eth-accounts.html#wallet-encrypt).",
-					"format": "uri"
-				},
-				"eth-abi-interactive.contractsPath": {
-					"type": "string",
-					"description": "Directory where the compiled smart contracts are stored. Relative to workspace root.",
-					"format": "uri",
-					"default": "build/contracts"
-				},
-				"eth-abi-interactive.nodeURI": {
-					"type": "string",
-					"description": "Ethereum node to send transactions to.",
-					"format": "uri",
-					"default": "http://localhost:8545"
-				}
-			}
-		},
-		"viewsContainers": {
-			"activitybar": [
-				{
-					"id": "eth-abi-interactive-container",
-					"title": "Eth ABI Interactive",
-					"icon": "media/eth.png"
-				}
-			]
-		},
-		"views": {
-			"eth-abi-interactive-container": [
-				{
-					"id": "eth-abi-interactive.contracts",
-					"name": "Contracts"
-				},
-				{
-					"id": "eth-abi-interactive.abis",
-					"name": "ABI"
-				},
-				{
-					"id": "eth-abi-interactive.accounts",
-					"name": "Accounts",
-					"visibility": "collapsed"
-				}
-			]
-		},
-		"commands": [
-			{
-				"command": "eth-abi-interactive.setEndpoint",
-				"title": "Set Eth Endpoint",
-				"icon": "$(plug)"
-			},
-			{
-				"command": "eth-abi-interactive.addPrivateKey",
-				"title": "Add Eth Private Key",
-				"icon": "$(key)"
-			},
-			{
-				"command": "eth-abi-interactive.refreshEntry",
-				"title": "Refresh",
-				"icon": "$(sync)"
-			},
-			{
-				"command": "eth-abi-interactive.useContract",
-				"title": "Use Contract"
-			},
-			{
-				"command": "eth-abi-interactive.editInput",
-				"title": "Edit input value",
-				"icon": "$(edit)"
-			},
-			{
-				"command": "eth-abi-interactive.sendTransaction",
-				"title": "Send transaction",
-				"icon": "$(play)"
-			},
-			{
-				"command": "eth-abi-interactive.callMethod",
-				"title": "Call method (no tx)",
-				"icon": "$(question)"
-			},
-			{
-				"command": "eth-abi-interactive.refreshAccounts",
-				"title": "Refresh",
-				"icon": "$(sync)"
-			},
-			{
-				"command": "eth-abi-interactive.useAccount",
-				"title": "Use account"
-			}
-		],
-		"menus": {
-			"view/title": [
-				{
-					"command": "eth-abi-interactive.refreshEntry",
-					"when": "view == eth-abi-interactive.contracts",
-					"group": "navigation"
-				},
-				{
-					"command": "eth-abi-interactive.setEndpoint",
-					"when": "view == eth-abi-interactive.contracts",
-					"group": "navigation"
-				},
-				{
-					"command": "eth-abi-interactive.addPrivateKey",
-					"when": "view == eth-abi-interactive.accounts",
-					"group": "navigation"
-				},
-				{
-					"command": "eth-abi-interactive.refreshAccounts",
-					"when": "view == eth-abi-interactive.accounts",
-					"group": "navigation"
-				}
-			],
-			"view/item/context": [
-				{
-					"command": "eth-abi-interactive.editInput",
-					"when": "view == eth-abi-interactive.abis && viewItem == abiInput",
-					"group": "inline"
-				},
-				{
-					"command": "eth-abi-interactive.sendTransaction",
-					"when": "view == eth-abi-interactive.abis && viewItem == abiFunction",
-					"group": "inline"
-				},
-				{
-					"command": "eth-abi-interactive.callMethod",
-					"when": "view == eth-abi-interactive.abis && viewItem == abiFunction",
-					"group": "inline"
-				}
-			]
-		}
-	},
-	"scripts": {
-		"vscode:prepublish": "npm run compile",
-		"compile": "tsc -p ./",
-		"lint": "eslint src --ext ts",
-		"watch": "tsc -watch -p ./",
-		"pretest": "npm run compile && npm run lint",
-		"test": "node ./out/test/runTest.js"
-	},
-	"devDependencies": {
-		"@types/glob": "^7.1.3",
-		"@types/mocha": "^8.0.0",
-		"@types/node": "^12.11.7",
-		"@types/vscode": "^1.50.0",
-		"@typescript-eslint/eslint-plugin": "^4.1.1",
-		"@typescript-eslint/parser": "^4.1.1",
-		"eslint": "^7.9.0",
-		"glob": "^7.1.6",
-		"mocha": "^8.1.3",
-		"typescript": "^4.0.2",
-		"vscode-test": "^1.4.0"
-	},
-	"dependencies": {
-		"web3": "^1.3.0"
-	}
+  "name": "eth-abi-explorer",
+  "displayName": "Eth ABI Explorer",
+  "publisher": "dmurdoch",
+  "description": "Interact with local deployed ethereum contracts with no extra effort.",
+  "license": "SEE LICENSE IN LICENSE.txt",
+  "icon": "media/eth.png",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/DanielMurdoch/eth-abi-explorer"
+  },
+  "version": "0.0.5",
+  "engines": {
+    "vscode": "^1.50.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "configuration": {
+      "title": "Eth ABI Explorer",
+      "properties": {
+        "eth-abi-explorer.privateKeysFile": {
+          "type": "string",
+          "markdownDescription": "File to store private keys used to sign transactions. Keys are encrypted using a master password. They are encrypted via [Web3JS.eth.accounts](https://web3js.readthedocs.io/en/v1.2.0/web3-eth-accounts.html#wallet-encrypt).",
+          "format": "uri"
+        },
+        "eth-abi-explorer.contractsPath": {
+          "type": "string",
+          "description": "Directory where the compiled smart contracts are stored. Relative to workspace root.",
+          "format": "uri",
+          "default": "build/contracts"
+        },
+        "eth-abi-explorer.nodeURI": {
+          "type": "string",
+          "description": "Ethereum node to send transactions to.",
+          "format": "uri",
+          "default": "http://localhost:8545"
+        }
+      }
+    },
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "eth-abi-explorer-container",
+          "title": "Eth ABI Explorer",
+          "icon": "media/eth.png"
+        }
+      ]
+    },
+    "views": {
+      "eth-abi-explorer-container": [
+        {
+          "id": "eth-abi-explorer.contracts",
+          "name": "Contracts"
+        },
+        {
+          "id": "eth-abi-explorer.abis",
+          "name": "ABI"
+        },
+        {
+          "id": "eth-abi-explorer.accounts",
+          "name": "Accounts",
+          "visibility": "collapsed"
+        }
+      ]
+    },
+    "commands": [
+      {
+        "command": "eth-abi-explorer.setEndpoint",
+        "title": "Set Eth Endpoint",
+        "icon": "$(plug)"
+      },
+      {
+        "command": "eth-abi-explorer.addPrivateKey",
+        "title": "Add Eth Private Key",
+        "icon": "$(key)"
+      },
+      {
+        "command": "eth-abi-explorer.refreshEntry",
+        "title": "Refresh",
+        "icon": "$(sync)"
+      },
+      {
+        "command": "eth-abi-explorer.useContract",
+        "title": "Use Contract"
+      },
+      {
+        "command": "eth-abi-explorer.editInput",
+        "title": "Edit input value",
+        "icon": "$(edit)"
+      },
+      {
+        "command": "eth-abi-explorer.sendTransaction",
+        "title": "Send transaction",
+        "icon": "$(play)"
+      },
+      {
+        "command": "eth-abi-explorer.callMethod",
+        "title": "Call method (no tx)",
+        "icon": "$(question)"
+      },
+      {
+        "command": "eth-abi-explorer.refreshAccounts",
+        "title": "Refresh",
+        "icon": "$(sync)"
+      },
+      {
+        "command": "eth-abi-explorer.useAccount",
+        "title": "Use account"
+      }
+    ],
+    "menus": {
+      "view/title": [
+        {
+          "command": "eth-abi-explorer.refreshEntry",
+          "when": "view == eth-abi-explorer.contracts",
+          "group": "navigation"
+        },
+        {
+          "command": "eth-abi-explorer.setEndpoint",
+          "when": "view == eth-abi-explorer.contracts",
+          "group": "navigation"
+        },
+        {
+          "command": "eth-abi-explorer.addPrivateKey",
+          "when": "view == eth-abi-explorer.accounts",
+          "group": "navigation"
+        },
+        {
+          "command": "eth-abi-explorer.refreshAccounts",
+          "when": "view == eth-abi-explorer.accounts",
+          "group": "navigation"
+        }
+      ],
+      "view/item/context": [
+        {
+          "command": "eth-abi-explorer.editInput",
+          "when": "view == eth-abi-explorer.abis && viewItem == abiInput",
+          "group": "inline"
+        },
+        {
+          "command": "eth-abi-explorer.sendTransaction",
+          "when": "view == eth-abi-explorer.abis && viewItem == abiFunction",
+          "group": "inline"
+        },
+        {
+          "command": "eth-abi-explorer.callMethod",
+          "when": "view == eth-abi-explorer.abis && viewItem == abiFunction",
+          "group": "inline"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "lint": "eslint src --ext ts",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile && npm run lint",
+    "test": "node ./out/test/runTest.js"
+  },
+  "devDependencies": {
+    "@types/mocha": "^8.0.0",
+    "@types/node": "^12.11.7",
+    "@types/vscode": "^1.50.0",
+    "@typescript-eslint/eslint-plugin": "^4.1.1",
+    "@typescript-eslint/parser": "^4.1.1",
+    "eslint": "^7.9.0",
+    "mocha": "^11.4.0",
+    "typescript": "^5.4.5",
+    "vscode-test": "^1.4.0"
+  },
+  "dependencies": {
+    "web3": "^4.16.0",
+    "@types/glob": "^7.1.3",
+    "glob": "^7.1.6"
+  }
 }
